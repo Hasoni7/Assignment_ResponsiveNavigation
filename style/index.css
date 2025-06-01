@@ -1,0 +1,123 @@
+nav {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(174, 107, 236);
+  color: white;
+  padding: 10px;
+  border-bottom: black 2px solid;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  width: 100%;
+  position: relative;
+  padding: 0 1rem;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.35rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: rgb(0, 22, 223);
+  font-weight: 600;
+  transition: color 0.3s ease;
+  position: relative;
+}
+.nav-links a:hover {
+  color: rgb(236, 240, 38);
+}
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background-color: royalblue;
+  transition: width 0.3s ease;
+}
+
+.hamburger-wrapper {
+  position: relative;
+}
+
+#menu-toggle {
+  display: none;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  width: 42px;
+  height: 42px;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  transition: transform 0.3s ease;
+}
+.hamburger:hover {
+  transform: scale(1.2);
+}
+
+.hamburger div {
+  width: 30px;
+  height: 3px;
+  background-color: white;
+  transition: background-color 0.3s ease;
+}
+.hamburger:hover div {
+  background-color: rgb(236, 240, 38);
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: rgb(174, 107, 236);
+    padding: 10px 0;
+    min-width: 150px;
+    z-index: 10;
+    border-top: 2px solid black;
+
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+  }
+
+  #menu-toggle:checked + .hamburger + .nav-links {
+    max-height: 300px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links li {
+    padding: 0.5rem 1rem;
+    text-align: right;
+  }
+}
